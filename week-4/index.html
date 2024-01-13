@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week-4 DOM</title>
+    <style>
+        .inputs {
+            background-color: rgb(209, 209, 209);
+            font-size: 20px;
+            padding: 5px;
+        }
+        #button {
+            font-size : 35px;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        function populateDiv(){
+            const a= document.getElementById("firstNum").value;
+            const b = document.getElementById("secondNum").value;
+            const ele = document.getElementById("finalSum");
+            console.log(ele);
+            ele.innerHTML = +a + +b;
+        }
+    </script>
+</head>
+<body>
+    <input id="firstNum" type="text" placeholder="First Number" class="inputs"> <br><br>
+    <input id="secondNum" type="text" placeholder="Second Number" class="inputs"> <br><br>
+    <button id="button" onclick="populateDiv()">Calculate Sum</button>
+    <div id="finalSum"></div>
+</body>
+</html>
