@@ -4,3 +4,8 @@ dumbest dalali method is using conditionals in a method this will lead in excess
 the file dumbAuthVal.js show the dumbest dalaali 
 
 the cleaner way is to do dalaali is via middlewares 
+the file middlewares.js have two function both takes input of req,res,next one checks user existance and other checks about correct input
+middlewares are callback fns that are given to the Request Methods after declaring routes and before the last callback .
+
+app.use(); this is used when we need a middleware in every routes 
+suppose their is another check is heart health checkup there also i will need user authentication so i can use that user check middleware in app.use
