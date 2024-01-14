@@ -9,3 +9,6 @@ middlewares are callback fns that are given to the Request Methods after declari
 
 app.use(); this is used when we need a middleware in every routes 
 suppose their is another check is heart health checkup there also i will need user authentication so i can use that user check middleware in app.use
+
+global catches help us to give better message to client it takes 4 inputs 
+app.use((err,req,res,next)=>res.send("Something is wrong")) this will keeps our error data safe and will send the text that is given we can log our error in our side 
