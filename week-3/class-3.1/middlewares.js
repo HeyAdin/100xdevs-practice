@@ -32,8 +32,14 @@ function kidneyMiddlewares(req,res,next){
     }
 };
 
-app.get('/health-checkup',userMiddlewares,kidneyMiddlewares,(req,res)=>{
+app.use(userMiddlewares);
+
+app.get('/health-checkup',kidneyMiddlewares,(req,res)=>{
     res.send("Your Kidney Health is Good");
+});
+
+app.get('/heart-checkup',(req,res)=>{
+    res.send("Your Heart Health is Good");
 });
 
 app.listen(PORT,()=>{
