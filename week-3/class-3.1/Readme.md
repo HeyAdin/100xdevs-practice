@@ -12,3 +12,6 @@ suppose their is another check is heart health checkup there also i will need us
 
 global catches help us to give better message to client it takes 4 inputs 
 app.use((err,req,res,next)=>res.send("Something is wrong")) this will keeps our error data safe and will send the text that is given we can log our error in our side 
+
+ZOD is a library for input validation, first impport zod, create structure of input that you expect from client and then by using that structure 
+pass the inputs from that structure if it is as expected will give an object {success : true} else {success : false}
