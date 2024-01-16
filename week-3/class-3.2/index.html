@@ -10,17 +10,24 @@
 <body>
     <script>
         function getData() {
-            fetch("https://fakerapi.it/api/v1/persons")
+            return fetch("https://fakerapi.it/api/v1/persons")
             .then((data)=>{
                 data.json().then((finalData)=>{
-                    console.log(finalData.data);
+                    console.log(finalData.data[1]);
                 });
             });
         };
 
+        // async function fetchUsername(){
+        //     const fetchResponse = await getData();
+        //     console.log(fetchResponse);
+        //     const myData = await fetchResponse.json();
+        //     console.log(myData)
+        // }
+
     </script>
     <!-- Create a Button -->
-    <button onclick="getData()">Get Data</button>
+    <button onclick="fetchUsername()">Get Data</button>
 </body>
 
 </html>
