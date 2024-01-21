@@ -8,6 +8,15 @@
 <body>
     <input type="text" , placeholder="Enter Num 1"> <br> <br>
     <input type="text" , placeholder="Enter Num 2"> <br> <br>
-    <button>Calculate Sum</button>
+    <button onclick="populateDiv()">Calculate Sum</button> <br> <br>
+    <div id="sum"></div>
 </body>
+<script>
+    function populateDiv(){
+        const sumDiv = document.querySelector('#sum');
+        const para = document.createElement("h3");
+        para.textContent = "Test Hyi There!";
+        sumDiv.appendChild(para);
+    }
+</script>
 </html>
