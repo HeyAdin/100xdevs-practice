@@ -8,17 +8,21 @@
 <body>
     <input id="num1" type="text" , placeholder="Enter Num 1"> <br> <br>
     <input id="num2" type="text" , placeholder="Enter Num 2"> <br> <br>
-    <button onclick="populateDiv()">Calculate Sum</button> <br> <br>
+    <button onclick="populateDiv()">Calculate Sum</button> <br>
     <h3 id="sum"></h3>
 </body>
 <script>
-    function populateDiv(){
+   async function populateDiv(){
         const body = document.querySelector("body")
         const num1 = document.querySelector('#num1').value;
         const num2 = document.querySelector('#num2').value;
         const sumDiv = document.querySelector('#sum');
-        sumDiv.textContent = +num1 + +num2;
-        body.appendChild(sumDiv);
+        // sumDiv.textContent = +num1 + +num2;
+        // body.appendChild(sumDiv);
+
+        const serverCall = await fetch("http://localhost:3000/sum?num1="+num1 + "&num2="+num2);
+        const serverData = await serverCall.text();
+        sumDiv.textContent =  serverData;
     }
 </script>
 </html>
