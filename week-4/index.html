@@ -10,19 +10,39 @@
     <input id="num2" type="text" , placeholder="Enter Num 2"> <br> <br>
     <button onclick="populateDiv()">Calculate Sum</button> <br>
     <h3 id="sum"></h3>
+    <br> <br>
+    <h1>Calculate Simple Interest</h1>
+    <input id="principle" type="text" placeholder="Principle Amount">
+    <input id="time" type="text" placeholder="Time">
+    <input id="roi" type="text" placeholder="Rate Of Interest">
+    <button onclick="calculateSimpleInterest()">Calculate</button>
+    <div id="Interest"></div>
 </body>
 <script>
    async function populateDiv(){
         const body = document.querySelector("body")
         const num1 = document.querySelector('#num1').value;
         const num2 = document.querySelector('#num2').value;
-        const sumDiv = document.querySelector('#sum');
         // sumDiv.textContent = +num1 + +num2;
         // body.appendChild(sumDiv);
-
+        
         const serverCall = await fetch("http://localhost:3000/sum?num1="+num1 + "&num2="+num2);
         const serverData = await serverCall.text();
-        sumDiv.textContent =  serverData;
+        // sumDiv.textContent =  serverData;
+        document.querySelector('#sum').textContent = serverData;
+    }
+
+    async function calculateSimpleInterest(){
+        // Simple Interest
+        const principle = document.querySelector("#principle").value;
+        const year = document.querySelector("#time").value;
+        const rate = document.querySelector("#roi").value;
+        console.log(principle, " ", year, " ", rate);
+
+        const serverInterestCall = await fetch("http://localhost:3000/interest/?principle="+principle+"&time="+year+"&roi="+rate);
+        const serverInterestData = await serverInterestCall.json();
+        console.log(serverInterestData);
+        document.querySelector('#Interest').textContent = `Your Total Amount Rs${serverInterestData.totalAmount} and Interest is Rs${serverInterestData.interest}`;
     }
 </script>
 </html>
