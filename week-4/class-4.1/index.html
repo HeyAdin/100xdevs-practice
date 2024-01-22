@@ -6,9 +6,10 @@
     <title>Document Object Model</title>
 </head>
 <body>
-    <input id="num1" type="text" , placeholder="Enter Num 1"> <br> <br>
-    <input id="num2" type="text" , placeholder="Enter Num 2"> <br> <br>
-    <button onclick="populateDiv()">Calculate Sum</button> <br>
+    <input oninput="debouncePopulateDiv()" id="num1" type="text" , placeholder="Enter Num 1"> <br> <br>
+    <input oninput="debouncePopulateDiv()" id="num2" type="text" , placeholder="Enter Num 2"> <br> <br>
+    
+    <!-- Without Using Button and Apply Debouncing -->
     <h3 id="sum"></h3>
     <br> <br>
     <h1>Calculate Simple Interest</h1>
@@ -19,6 +20,16 @@
     <div id="Interest"></div>
 </body>
 <script>
+    // Debouncing 
+    let timeout;
+    function debouncePopulateDiv(){
+        // Clear starting time when user inputs another input start the timer again
+        clearTimeout(timeout);
+        timeout = setTimeout(()=>{
+            populateDiv();
+        },500);
+    }
+
    async function populateDiv(){
         const body = document.querySelector("body")
         const num1 = document.querySelector('#num1').value;
