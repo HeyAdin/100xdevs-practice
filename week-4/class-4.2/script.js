@@ -1,13 +1,14 @@
+let id = 1;
 function todo() {
     const title = document.querySelector('#title').value;
     const description = document.querySelector('#description').value;
     const container = document.querySelector("#container");
-    container.appendChild(createChild(title,description));
+    container.appendChild(createChild(title, description,id++));
 }
 
-function createChild(title, description) {
+function createChild(title, description,id) {
     const div = document.createElement("div");
-    div.setAttribute('id', `${title}`)
+    div.setAttribute('id', `${id}`)
 
     const todoTitle = document.createElement("h1");
     todoTitle.textContent = title;
@@ -19,7 +20,13 @@ function createChild(title, description) {
 
     const markBtn = document.createElement("button");
     markBtn.textContent = "Mark as Done";
+    markBtn.setAttribute('onclick',`markAsDone(${id})`);
     div.appendChild(markBtn);
 
     return div;
+}
+
+function markAsDone(id){
+    const parent = document.getElementById(id); 
+    parent.children[2].textContent = "Done";
 }
