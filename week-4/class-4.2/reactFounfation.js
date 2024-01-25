@@ -1,10 +1,4 @@
 let id = 1;
-function todo() {
-    const title = document.querySelector('#title').value;
-    const description = document.querySelector('#description').value;
-    const container = document.querySelector("#container");
-    container.appendChild(createChild(title, description, id++));
-}
 
 function createChild(title, description, id) {
     const div = document.createElement("div");
@@ -25,3 +19,24 @@ function createChild(title, description, id) {
 
     return div;
 }
+
+function updateDomAccToState(state){
+    const container = document.querySelector("#container");
+    container.innerHTML = "";
+    for(const eachTodo of state){
+        const child = createChild(eachTodo.title,eachTodo.description,eachTodo.id);
+        container.appendChild(child);
+    }
+}
+
+const state = [{
+    title : "Eat Healthy",
+    description : " I will eat Healthy",
+    id : 1,
+},{
+    title : "fix sleep schedule",
+    description : " I will sleep early",
+    id : 2,
+}];
+
+updateDomAccToState(state);
