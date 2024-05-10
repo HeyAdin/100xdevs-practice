@@ -29,14 +29,8 @@ function updateDomAccToState(state){
     }
 }
 
-const state = [{
-    title : "Eat Healthy",
-    description : " I will eat Healthy",
-    id : 1,
-},{
-    title : "fix sleep schedule",
-    description : " I will sleep early",
-    id : 2,
-}];
-
-updateDomAccToState(state);
+window.setInterval(async()=>{
+    const resData = await fetch("http://localhost:3000/");
+    const todos = await resData.json();
+    updateDomAccToState(todos.todo);
+},3000)
